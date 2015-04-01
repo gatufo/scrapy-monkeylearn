@@ -99,6 +99,7 @@ class MonkeyLearnPipeline(object):
     def _make_request(self, item, spider):
         text_to_classify = self._get_text(item)
         body = json.dumps({'text': text_to_classify})
+        scrapy.log.msg(body)
         request = scrapy.Request(
             CLASSIFY_TEXT_URL.format(classifier=self.classifier),
             method='POST',
