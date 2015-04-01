@@ -93,6 +93,10 @@ class MonkeyLearnPipeline(object):
     def _get_text(self, item):
         """Extract a space-separated string of the text of all fields to be
         classified."""
+        scrapy.log.msg('-'*40)
+        scrapy.log.msg('fields=%s' % self.classifier_fields)
+        scrapy.log.msg('-'*40)
+
         fields = (item.get(field_name) for field_name in self.classifier_fields)
         return u' '.join(filter(None, fields))
 
